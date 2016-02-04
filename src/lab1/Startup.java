@@ -20,12 +20,12 @@ public class Startup {
             not have to be a GUI class.
         */
         Employee employee = new Employee();
-        Hr hr = new Hr();
-        hr.setFirstName("John");
-        hr.setLastName("Doe");
-        hr.setSsn("333-33-3333");
         
-        System.out.println(hr.getFirstName() + " " + hr.getLastName() + " " + hr.getSsn());
+       
+        employee.setFirstName("John");
+        employee.setLastName("Doe");
+        employee.setSsn("333-33-2222");
+        System.out.println(employee.getFirstName() + " " + employee.getLastName() + " " + employee.getSsn());
 
         employee.setMetDeptStaff(false);
         employee.meetWithHrForBenefitAndSalryInfo();

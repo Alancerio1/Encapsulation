@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * private Date currentDate; private boole@author alancerio18
  */
-public class Hr {
+public class HRManager {
     private String firstName;
     private String lastName;
     private String ssn;

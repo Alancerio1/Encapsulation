@@ -11,8 +11,8 @@ import java.util.Date;
  * @author      Jim Lombardo, WCTC Instructor
  * @version     1.01
  */
-public class Employee extends Hr {
-    private Hr hr;
+public class Employee extends HRManager {
+    private HRManager hr;
     private Date birthDate;
     private boolean metWithHr;
     private boolean metDeptStaff;
@@ -20,6 +20,14 @@ public class Employee extends Hr {
     private boolean movedIn;
     private String cubeId;
     private Date currentDate;
+
+    public HRManager getHr() {
+        return hr;
+    }
+
+    public void setHr(HRManager hr) {
+        this.hr = hr;
+    }
 
    
 
@@ -41,17 +49,21 @@ public class Employee extends Hr {
     // Assume this must be performed first
    public void meetWithHrForBenefitAndSalryInfo() {
         
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(currentDate);
+        String fmtDate = formatDate();
         System.out.println("Met with Hr on " + fmtDate);
         metWithHr = true;
+    }
+
+    private String formatDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        String fmtDate = sdf.format(currentDate);
+        return fmtDate;
     }
 
     // Assume this is must be performed second
     public void meetDepartmentStaff() {
         if(metWithHr) {
-            SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-            String fmtDate = sdf.format(currentDate);
+            String fmtDate = formatDate();
             System.out.println("Met with Dept. Staff on " + fmtDate);
             metDeptStaff = true;
         } else {
@@ -63,8 +75,7 @@ public class Employee extends Hr {
     // Assume this must be performed third
     public void reviewDeptPolicies() {
         if(metWithHr && metDeptStaff) {
-            SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-            String fmtDate = sdf.format(currentDate);
+            String fmtDate = formatDate();
             System.out.println("Reviewed Dept. Policies on " + fmtDate);
             reviewedDeptPolicies = true;
         } else {
@@ -77,8 +88,7 @@ public class Employee extends Hr {
     // Assume this must be performed 4th
     public void moveIntoCubicle(String cubeId) {
         if(metWithHr && metDeptStaff && reviewedDeptPolicies) {
-            SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-            String fmtDate = sdf.format(currentDate);
+            String fmtDate = formatDate();
             System.out.println("Moved into cube on " + fmtDate);
             this.cubeId = cubeId;
             this.movedIn = true;
@@ -92,8 +102,7 @@ public class Employee extends Hr {
     }
 
     public String getStatus() {
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(currentDate);
+        String fmtDate = formatDate();
 
         if(metWithHr && metDeptStaff
            && reviewedDeptPolicies && movedIn) {
