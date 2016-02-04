@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
  * 
  * @author jlombardo
  */
+
 public class Cake {
     // Good encapsulation: private scope
     // property can only be referenced inside this class.

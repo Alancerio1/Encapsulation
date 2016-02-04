@@ -11,24 +11,36 @@ import java.util.Date;
  * @author      Jim Lombardo, WCTC Instructor
  * @version     1.01
  */
-public class Employee {
-    String firstName;
-    String lastName;
-    public String ssn;
-    public Date birthDate;
-    boolean metWithHr;
-    boolean metDeptStaff;
-    boolean reviewedDeptPolicies;
-    boolean movedIn;
-    String cubeId;
-    Date currentDate;
+public class Employee extends Hr {
+    private Hr hr;
+    private Date birthDate;
+    private boolean metWithHr;
+    private boolean metDeptStaff;
+    private boolean reviewedDeptPolicies;
+    private boolean movedIn;
+    private String cubeId;
+    private Date currentDate;
 
+   
+
+    public boolean isMetDeptStaff() {
+        return metDeptStaff;
+    }
+
+    public final void setMetDeptStaff(boolean metDeptStaff) {
+        this.metDeptStaff = metDeptStaff;
+    }
+    
+    
+   
+    
     public Employee() {
         currentDate = new Date();
     }
 
     // Assume this must be performed first
-    public void meetWithHrForBenefitAndSalryInfo() {
+   public void meetWithHrForBenefitAndSalryInfo() {
+        
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(currentDate);
         System.out.println("Met with Hr on " + fmtDate);
@@ -89,5 +101,6 @@ public class Employee {
         } else {
             return fmtDate + ": Orientation in progress...";
         }
+     
     }
 }
